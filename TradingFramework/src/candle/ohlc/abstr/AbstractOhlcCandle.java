@@ -1,11 +1,17 @@
 package candle.ohlc.abstr;
 
+/**
+ * A Candle with open, high, low, close values.
+ * double primitive is used to store data.
+ * @author Mark
+ *
+ */
 public abstract class AbstractOhlcCandle {
 
-	protected final double open;
-	protected final double high;
-	protected final double low;
-	protected final double close;
+	private final double open;
+	private final double high;
+	private final double low;
+	private final double close;
 	
 	protected AbstractOhlcCandle(final double open, final double high, 
 			final double low, final double close) throws Exception{
@@ -28,4 +34,6 @@ public abstract class AbstractOhlcCandle {
 		if(!(close<=high && close>=low))
 			throw new Exception("Invalid values, !(close<=high && close>=low). Close: "+close+" High: "+high+" Low: "+low);
 	}
+	
+	
 }
