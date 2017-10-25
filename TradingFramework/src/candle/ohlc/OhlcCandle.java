@@ -9,12 +9,7 @@ public class OhlcCandle extends AbstractOhlcCandle{
 	public OhlcCandle(final double open, final double high, 
 			final double low, final double close) throws Exception{
 		
-		super(open,high,low,close);/*
-		this.open=open;
-		this.high=high;
-		this.low=low;
-		this.close=close;
-		checkValues();*/
+		super(open,high,low,close);
 	}
 	
 	public OhlcCandle(final String open, final String high, 

@@ -1,6 +1,8 @@
 package candle.ohlc.abstr;
 
-public abstract class AbstractOhlcCandle {
+import candle.ohlc.abstr.interf.IOhlcCandle;
+
+public abstract class AbstractOhlcCandle implements IOhlcCandle{
 
 	protected final double open;
 	protected final double high;
@@ -27,5 +29,25 @@ public abstract class AbstractOhlcCandle {
 			throw new Exception("Invalid values, !(open<=high && open>=low). Open: "+open+" High: "+high+" Low: "+low);
 		if(!(close<=high && close>=low))
 			throw new Exception("Invalid values, !(close<=high && close>=low). Close: "+close+" High: "+high+" Low: "+low);
+	}
+	
+	public final double open(){
+		
+		return open;
+	}
+	
+	public final double high(){
+		
+		return high;
+	}
+	
+	public final double low(){
+		
+		return low;
+	}
+	
+	public final double close(){
+		
+		return close;
 	}
 }
