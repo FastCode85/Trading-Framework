@@ -2,6 +2,11 @@ package candle.ohlc.temp;
 
 import candle.ohlc.temp.interf.ITempOhlcCandle;
 
+/**
+ * A Temporary OHLC Candle, which is still forming.
+ * @author Mark
+ *
+ */
 public final class TempOhlcCandle implements ITempOhlcCandle{
 	
 	private double open;
@@ -9,6 +14,15 @@ public final class TempOhlcCandle implements ITempOhlcCandle{
 	private double low;
 	private double close;
 	
+	/**
+	 * Secondary constructor. Should be used only if the current candle's values
+	 * are known.
+	 * @param open
+	 * @param high
+	 * @param low
+	 * @param close
+	 * @throws Exception if params are not valid prices for a OHLC Candle.
+	 */
 	public TempOhlcCandle(final double open, final double high, 
 			final double low, final double close) throws Exception{
 		
@@ -19,11 +33,21 @@ public final class TempOhlcCandle implements ITempOhlcCandle{
 		checkValues();
 	}
 	
+	/**
+	 * Preferred constructor. Should always be used to create a updatable
+	 * Temporary OHLC Candle.
+	 * @param open
+	 * @throws Exception
+	 */
 	public TempOhlcCandle(final double open) throws Exception{
 		
 		this(open,open,open,open);
 	}
 	
+	/**
+	 * Checks the correctness of the values of this candle.
+	 * @throws Exception
+	 */
 	private final void checkValues() throws Exception{
 		
 		if(open<=0 || high<=0 || low<=0 || close<=0)

@@ -3,7 +3,7 @@ package candle.ohlc;
 import candle.ohlc.abstr.AbstractOhlcCandle;
 
 /**
- * A Candle with open, high, low, close values.
+ * A OHLC Candle with open, high, low, close values.
  * double primitive is used to store data.
  * @author Mark
  *
