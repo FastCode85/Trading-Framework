@@ -1,9 +1,11 @@
 package candle.ohlc.with.bidask;
 
 import candle.ohlc.OhlcCandle;
+import candle.ohlc.abstr.interf.IOhlcCandle;
+import candle.ohlc.with.bidask.interf.IWithBidAsk;
 import candle.ohlc.with.unixtime.WithUnixtime;
 
-public class WithBidAsk {
+public class WithBidAsk implements IWithBidAsk{
 
 	private final WithUnixtime bidCandleWithUnixtime;
 	private final OhlcCandle askCandle;
@@ -14,5 +16,30 @@ public class WithBidAsk {
 		this.bidCandleWithUnixtime=bidCandleWithUnixtime;
 		askCandle=new OhlcCandle(openAsk,highAsk,lowAsk,closeAsk);
 	}
+	
+	public WithBidAsk(WithUnixtime bidCandleWithUnixtime, OhlcCandle askCandle) throws Exception{
+		
+		this(bidCandleWithUnixtime,askCandle.open(),askCandle.high(),askCandle.low(),askCandle.close());
+	}
+
+	@Override
+	public IOhlcCandle askCandle() {
+		
+		return askCandle;
+	}
+
+	@Override
+	public IOhlcCandle bidCandle() {
+
+		return bidCandleWithUnixtime.candle();
+	}
+
+	@Override
+	public long creationTime() {
+		
+		return bidCandleWithUnixtime.creationTime();
+	}
+	
+	
 	
 }

@@ -4,13 +4,7 @@ import candle.ohlc.abstr.interf.IOhlcCandle;
 
 public interface IWithBidAsk {
 
-	public double openAsk();
-	
-	public double highAsk();
-	
-	public double lowAsk();
-	
-	public double closeAsk();
-	
-	public IOhlcCandle candle();
+	public IOhlcCandle askCandle();
+	public IOhlcCandle bidCandle();
+	public long creationTime();
 }
