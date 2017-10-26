@@ -9,4 +9,14 @@ public interface IOhlcCandle {
 	public double low();
 	
 	public double close();
+	
+	/**
+	 * Updates the TempOhlcCandle, a temporary candle which is still forming,
+	 * with the new price.
+	 * @param newPrice
+	 * @throws Exception 
+	 */
+	public void newTick(double newPrice) throws Exception;
+
+	public boolean mutable();
 }

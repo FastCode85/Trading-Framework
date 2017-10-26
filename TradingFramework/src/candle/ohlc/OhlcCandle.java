@@ -1,7 +1,7 @@
 package candle.ohlc;
 
 import candle.ohlc.abstr.AbstractOhlcCandle;
-import candle.ohlc.temp.interf.ITempOhlcCandle;
+import candle.ohlc.abstr.interf.IOhlcCandle;
 import candle.ohlc.with.unixtime.WithUnixtime;
 
 //TODO: MAKE TEST FOR public OhlcCandle(final ITempOhlcCandle tempCandle)
@@ -13,26 +13,49 @@ import candle.ohlc.with.unixtime.WithUnixtime;
  */
 public final class OhlcCandle extends AbstractOhlcCandle{
 
+	private final boolean mutable;
 	
 	public OhlcCandle(final double open, final double high, 
-			final double low, final double close) throws Exception{
+			final double low, final double close, boolean mutable) throws Exception{
 		
 		super(open,high,low,close);
+		this.mutable=mutable;
 	}
 	
 	public OhlcCandle(final String open, final String high, 
-			final String low, final String close) throws Exception{
+			final String low, final String close, boolean mutable) throws Exception{
 	
-		this(Double.parseDouble(open),Double.parseDouble(high),Double.parseDouble(high),Double.parseDouble(close));
+		this(Double.parseDouble(open),Double.parseDouble(high),
+				Double.parseDouble(high),Double.parseDouble(close),mutable);
 	}
 	
-	public OhlcCandle(final ITempOhlcCandle tempCandle) throws Exception{
+	public OhlcCandle(final IOhlcCandle tempCandle) throws Exception{
 	
-		this(tempCandle.open(),tempCandle.high(),tempCandle.low(),tempCandle.close());
+		this(tempCandle.open(),tempCandle.high(),tempCandle.low(),tempCandle.close(),
+				tempCandle.mutable());
 	}
 	
 	public WithUnixtime withUnixtime(long creationTime){
 		
 		return new WithUnixtime(creationTime, this);
+	}
+	
+	@Override
+	public void newTick(double newPrice) throws Exception {
+		
+		if(!mutable)
+			throw new Exception("Not mutable Candle.");
+		if(newPrice>high)
+			high=newPrice;
+		else if(newPrice<low)
+			low=newPrice;
+		close=newPrice;
+		
+	}
+
+	@Override
+	public boolean mutable() {
+		
+		return mutable;
 	}
 }

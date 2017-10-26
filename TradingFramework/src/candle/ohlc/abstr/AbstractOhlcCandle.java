@@ -10,10 +10,10 @@ import candle.ohlc.abstr.interf.IOhlcCandle;
  */
 public abstract class AbstractOhlcCandle implements IOhlcCandle{
 
-	private final double open;
-	private final double high;
-	private final double low;
-	private final double close;
+	protected double open;
+	protected double high;
+	protected double low;
+	protected double close;
 	
 	protected AbstractOhlcCandle(final double open, final double high, 
 			final double low, final double close) throws Exception{
