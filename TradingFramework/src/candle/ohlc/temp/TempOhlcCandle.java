@@ -1,11 +1,13 @@
 package candle.ohlc.temp;
 
-public final class TempOhlcCandle{
+import candle.ohlc.temp.interf.ITempOhlcCandle;
+
+public final class TempOhlcCandle implements ITempOhlcCandle{
 	
-	private final double open;
-	private final double high;
-	private final double low;
-	private final double close;
+	private double open;
+	private double high;
+	private double low;
+	private double close;
 	
 	public TempOhlcCandle(final double open, final double high, 
 			final double low, final double close) throws Exception{
@@ -27,6 +29,26 @@ public final class TempOhlcCandle{
 			throw new Exception("Invalid values, !(open<=high && open>=low). Open: "+open+" High: "+high+" Low: "+low);
 		if(!(close<=high && close>=low))
 			throw new Exception("Invalid values, !(close<=high && close>=low). Close: "+close+" High: "+high+" Low: "+low);
+	}
+
+	public final double open(){
+		
+		return open;
+	}
+	
+	public final double high(){
+		
+		return high;
+	}
+	
+	public final double low(){
+		
+		return low;
+	}
+	
+	public final double close(){
+		
+		return close;
 	}
 	
 	
