@@ -19,6 +19,11 @@ public final class TempOhlcCandle implements ITempOhlcCandle{
 		checkValues();
 	}
 	
+	public TempOhlcCandle(final double open) throws Exception{
+		
+		this(open,open,open,open);
+	}
+	
 	private final void checkValues() throws Exception{
 		
 		if(open<=0 || high<=0 || low<=0 || close<=0)
@@ -49,6 +54,17 @@ public final class TempOhlcCandle implements ITempOhlcCandle{
 	public final double close(){
 		
 		return close;
+	}
+
+	@Override
+	public void newTick(double newPrice) {
+		
+		if(newPrice>high)
+			high=newPrice;
+		else if(newPrice<low)
+			low=newPrice;
+		close=newPrice;
+		
 	}
 	
 	
