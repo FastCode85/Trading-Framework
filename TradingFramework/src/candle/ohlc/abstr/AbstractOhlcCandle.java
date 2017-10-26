@@ -8,10 +8,10 @@ package candle.ohlc.abstr;
  */
 public abstract class AbstractOhlcCandle {
 
-	private final double open;
-	private final double high;
-	private final double low;
-	private final double close;
+	protected final double open;
+	protected final double high;
+	protected final double low;
+	protected final double close;
 	
 	protected AbstractOhlcCandle(final double open, final double high, 
 			final double low, final double close) throws Exception{
@@ -36,4 +36,24 @@ public abstract class AbstractOhlcCandle {
 	}
 	
 	
+	
+	public final double open(){
+		
+		return open;
+	}
+	
+	public final double high(){
+		
+		return high;
+	}
+	
+	public final double low(){
+		
+		return low;
+	}
+	
+	public final double close(){
+		
+		return close;
+	}
 }
