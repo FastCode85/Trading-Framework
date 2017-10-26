@@ -1,6 +1,8 @@
 package candle.ohlc;
 
 import candle.ohlc.abstr.AbstractOhlcCandle;
+import candle.ohlc.abstr.interf.IOhlcCandle;
+import candle.ohlc.with.unixtime.WithUnixtime;
 
 /**
  * A OHLC Candle with open, high, low, close values.
@@ -21,5 +23,10 @@ public final class OhlcCandle extends AbstractOhlcCandle{
 			final String low, final String close) throws Exception{
 	
 		this(Double.parseDouble(open),Double.parseDouble(high),Double.parseDouble(high),Double.parseDouble(close));
+	}
+	
+	public WithUnixtime<IOhlcCandle> withUnixtime(long creationTime){
+		
+		return new WithUnixtime<IOhlcCandle>(creationTime, this);
 	}
 }

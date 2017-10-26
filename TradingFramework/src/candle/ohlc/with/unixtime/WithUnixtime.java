@@ -1,5 +1,7 @@
 package candle.ohlc.with.unixtime;
 
+import candle.ohlc.abstr.interf.IOhlcCandle;
+
 /**
  * A OHLC Candle with creation time, which is Unixtime in Millis.
  * @author Mark
@@ -10,7 +12,7 @@ package candle.ohlc.with.unixtime;
 /*
  * TODO: T has to be restricted, but need to avoid duplication over the Temp candle class.
  */
-public class WithUnixtime<T> {
+public class WithUnixtime<T extends IOhlcCandle> {
 
 	/**
 	 * Creation Time, in Unixtime Millis.

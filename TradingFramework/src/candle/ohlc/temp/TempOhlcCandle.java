@@ -1,6 +1,8 @@
 package candle.ohlc.temp;
 
+import candle.ohlc.abstr.interf.IOhlcCandle;
 import candle.ohlc.temp.interf.ITempOhlcCandle;
+import candle.ohlc.with.unixtime.WithUnixtime;
 
 /**
  * A Temporary OHLC Candle, which is still forming.
@@ -58,6 +60,11 @@ public final class TempOhlcCandle implements ITempOhlcCandle{
 			throw new Exception("Invalid values, !(open<=high && open>=low). Open: "+open+" High: "+high+" Low: "+low);
 		if(!(close<=high && close>=low))
 			throw new Exception("Invalid values, !(close<=high && close>=low). Close: "+close+" High: "+high+" Low: "+low);
+	}
+	
+	public WithUnixtime<ITempOhlcCandle> withUnixtime(long creationTime){
+		
+		return new WithUnixtime<ITempOhlcCandle>(creationTime, this);
 	}
 
 	public final double open(){

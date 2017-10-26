@@ -1,12 +1,14 @@
 package candle.ohlc.abstr;
 
+import candle.ohlc.abstr.interf.IOhlcCandle;
+
 /**
  * Abstract OHLC Candle with open, high, low, close values.
  * double primitive is used to store data.
  * @author Mark
  *
  */
-public abstract class AbstractOhlcCandle {
+public abstract class AbstractOhlcCandle implements IOhlcCandle{
 
 	private final double open;
 	private final double high;
