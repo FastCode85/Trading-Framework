@@ -1,9 +1,10 @@
 package candle.ohlc;
 
 import candle.ohlc.abstr.AbstractOhlcCandle;
-import candle.ohlc.abstr.interf.IOhlcCandle;
+import candle.ohlc.temp.interf.ITempOhlcCandle;
 import candle.ohlc.with.unixtime.WithUnixtime;
 
+//TODO: MAKE TEST FOR public OhlcCandle(final ITempOhlcCandle tempCandle)
 /**
  * A OHLC Candle with open, high, low, close values.
  * double primitive is used to store data.
@@ -25,8 +26,13 @@ public final class OhlcCandle extends AbstractOhlcCandle{
 		this(Double.parseDouble(open),Double.parseDouble(high),Double.parseDouble(high),Double.parseDouble(close));
 	}
 	
-	public WithUnixtime<IOhlcCandle> withUnixtime(long creationTime){
+	public OhlcCandle(final ITempOhlcCandle tempCandle) throws Exception{
+	
+		this(tempCandle.open(),tempCandle.high(),tempCandle.low(),tempCandle.close());
+	}
+	
+	public WithUnixtime withUnixtime(long creationTime){
 		
-		return new WithUnixtime<IOhlcCandle>(creationTime, this);
+		return new WithUnixtime(creationTime, this);
 	}
 }

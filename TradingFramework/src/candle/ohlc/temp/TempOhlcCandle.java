@@ -62,9 +62,9 @@ public final class TempOhlcCandle implements ITempOhlcCandle{
 			throw new Exception("Invalid values, !(close<=high && close>=low). Close: "+close+" High: "+high+" Low: "+low);
 	}
 	
-	public WithUnixtime<ITempOhlcCandle> withUnixtime(long creationTime){
+	public WithUnixtime withUnixtime(long creationTime){
 		
-		return new WithUnixtime<ITempOhlcCandle>(creationTime, this);
+		return new WithUnixtime(creationTime, this);
 	}
 
 	public final double open(){
