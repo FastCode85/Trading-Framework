@@ -8,7 +8,7 @@ import candle.ohlc.abstr.AbstractOhlcCandle;
  * @author Mark
  *
  */
-public class OhlcCandle extends AbstractOhlcCandle{
+public final class OhlcCandle extends AbstractOhlcCandle{
 
 	
 	public OhlcCandle(final double open, final double high, 
