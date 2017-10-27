@@ -1,4 +1,4 @@
-package candle.sequence;
+package candle.sequence.timed;
 
 import java.util.Collections;
 import java.util.List;
