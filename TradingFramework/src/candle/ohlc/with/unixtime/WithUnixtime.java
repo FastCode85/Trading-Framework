@@ -1,6 +1,7 @@
 package candle.ohlc.with.unixtime;
 
 import candle.ohlc.abstr.interf.IOhlcCandle;
+import candle.ohlc.with.unixtime.interf.IWithUnixtime;
 
 /**
  * A OHLC Candle with creation time, which is Unixtime in Millis.
@@ -12,7 +13,7 @@ import candle.ohlc.abstr.interf.IOhlcCandle;
 /*
  * TODO: T has to be restricted, but need to avoid duplication over the Temp candle class.
  */
-public class WithUnixtime{
+public class WithUnixtime implements IWithUnixtime{
 
 	/**
 	 * Creation Time, in Unixtime Millis.
@@ -31,10 +32,6 @@ public class WithUnixtime{
 		this.ohlcCandle=ohlcCandle;
 	}
 	
-	/**
-	 * 
-	 * @return creationTime
-	 */
 	public long creationTime(){
 		
 		return creationTime;
@@ -44,8 +41,10 @@ public class WithUnixtime{
 	 * Returns the OHLC Candle.
 	 * @return
 	 */
+	@Override
 	public IOhlcCandle candle(){
 		
 		return ohlcCandle;
 	}
+
 }
