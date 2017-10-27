@@ -58,4 +58,11 @@ public final class OhlcCandle extends AbstractOhlcCandle{
 		
 		return mutable;
 	}
+	
+	@Override
+	public String toString(){
+		
+		StringBuffer sb=new StringBuffer().append("Open: ").append(open).append(" High: ").append(high).append(" Low: ").append(low).append(" Close: "+close);
+				return sb.toString();
+	}
 }

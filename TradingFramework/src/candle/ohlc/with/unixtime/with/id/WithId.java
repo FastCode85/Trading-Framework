@@ -3,12 +3,12 @@ package candle.ohlc.with.unixtime.with.id;
 import candle.ohlc.with.unixtime.interf.IWithUnixtime;
 import candle.ohlc.with.unixtime.with.id.interf.IWithId;
 
-public class WithId<T extends IWithUnixtime> implements IWithId<T>{
+public class WithId implements IWithId{
 
 	private final long id;
-	private final T withUnixtime;
+	private final IWithUnixtime withUnixtime;
 	
-	public WithId(long id, T withUnixtime){
+	public WithId(long id, IWithUnixtime withUnixtime){
 		
 		this.id=id;
 		this.withUnixtime=withUnixtime;
@@ -21,8 +21,9 @@ public class WithId<T extends IWithUnixtime> implements IWithId<T>{
 	}
 
 	@Override
-	public T element() {
+	public IWithUnixtime withUnixtime() {
 		
 		return withUnixtime;
 	}
+
 }

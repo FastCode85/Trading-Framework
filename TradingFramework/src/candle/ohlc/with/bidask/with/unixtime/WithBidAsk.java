@@ -1,9 +1,13 @@
 package candle.ohlc.with.bidask.with.unixtime;
 
+import java.util.Comparator;
+
 import candle.ohlc.OhlcCandle;
 import candle.ohlc.abstr.interf.IOhlcCandle;
 import candle.ohlc.with.bidask.with.unixtime.interf.IWithBidAsk;
 import candle.ohlc.with.unixtime.WithUnixtime;
+import candle.ohlc.with.unixtime.comparator.UnixtimeComparator;
+import candle.ohlc.with.unixtime.interf.IWithUnixtime;
 
 
 public class WithBidAsk implements IWithBidAsk{
@@ -44,6 +48,12 @@ public class WithBidAsk implements IWithBidAsk{
 	public long creationTime() {
 		
 		return bidCandleWithUnixtime.creationTime();
+	}
+
+	@Override
+	public Comparator<IWithUnixtime> ascOrderComparator() {
+		
+		return new UnixtimeComparator();
 	}
 	
 	

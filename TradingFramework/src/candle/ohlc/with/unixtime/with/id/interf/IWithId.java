@@ -1,9 +1,11 @@
 package candle.ohlc.with.unixtime.with.id.interf;
 
+import java.util.Comparator;
+
 import candle.ohlc.with.unixtime.interf.IWithUnixtime;
 
-public interface IWithId<T extends IWithUnixtime> {
+public interface IWithId {
 
 	public long id();
-	public T element();
+	public IWithUnixtime withUnixtime();
 }

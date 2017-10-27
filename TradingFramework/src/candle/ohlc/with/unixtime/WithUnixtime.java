@@ -1,6 +1,9 @@
 package candle.ohlc.with.unixtime;
 
+import java.util.Comparator;
+
 import candle.ohlc.abstr.interf.IOhlcCandle;
+import candle.ohlc.with.unixtime.comparator.UnixtimeComparator;
 import candle.ohlc.with.unixtime.interf.IWithUnixtime;
 
 /**
@@ -13,7 +16,7 @@ import candle.ohlc.with.unixtime.interf.IWithUnixtime;
 /*
  * TODO: T has to be restricted, but need to avoid duplication over the Temp candle class.
  */
-public class WithUnixtime implements IWithUnixtime{
+public final class WithUnixtime implements IWithUnixtime{
 
 	/**
 	 * Creation Time, in Unixtime Millis.
@@ -46,6 +49,12 @@ public class WithUnixtime implements IWithUnixtime{
 	public IOhlcCandle bidCandle(){
 		
 		return bidCandle;
+	}
+
+	@Override
+	public Comparator<IWithUnixtime> ascOrderComparator() {
+		
+		return new UnixtimeComparator();
 	}
 
 }
