@@ -15,7 +15,7 @@ public class WithBidAsk implements IWithBidAsk{
 			final double highAsk, final double lowAsk,final double closeAsk) throws Exception{
 		
 		this.bidCandleWithUnixtime=bidCandleWithUnixtime;
-		askCandle=new OhlcCandle(openAsk,highAsk,lowAsk,closeAsk,bidCandleWithUnixtime.candle().mutable());
+		askCandle=new OhlcCandle(openAsk,highAsk,lowAsk,closeAsk,bidCandleWithUnixtime.bidCandle().mutable());
 	}
 	
 	public WithBidAsk(WithUnixtime bidCandleWithUnixtime, OhlcCandle askCandle) throws Exception{
@@ -37,7 +37,7 @@ public class WithBidAsk implements IWithBidAsk{
 	@Override
 	public IOhlcCandle bidCandle() {
 
-		return bidCandleWithUnixtime.candle();
+		return bidCandleWithUnixtime.bidCandle();
 	}
 
 	@Override

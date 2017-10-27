@@ -19,17 +19,18 @@ public class WithUnixtime implements IWithUnixtime{
 	 * Creation Time, in Unixtime Millis.
 	 */
 	private final long creationTime;
-	private final IOhlcCandle ohlcCandle;
+	private final IOhlcCandle bidCandle;
 	
 	/**
 	 * Should be used passing a OhlcCandle as last parameter.
-	 * @param creationTime
-	 * @param ohlcCandle
+	 * @param creationTime 
+	 * @param ohlcCandle the bid candle. Since a candle with time is a market data,
+	 * this parameter is considered as Bid candle.
 	 */
-	public WithUnixtime(final long creationTime, IOhlcCandle ohlcCandle){
+	public WithUnixtime(final long creationTime, IOhlcCandle bidCandle){
 		
 		this.creationTime=creationTime;
-		this.ohlcCandle=ohlcCandle;
+		this.bidCandle=bidCandle;
 	}
 	
 	public long creationTime(){
@@ -42,9 +43,9 @@ public class WithUnixtime implements IWithUnixtime{
 	 * @return
 	 */
 	@Override
-	public IOhlcCandle candle(){
+	public IOhlcCandle bidCandle(){
 		
-		return ohlcCandle;
+		return bidCandle;
 	}
 
 }

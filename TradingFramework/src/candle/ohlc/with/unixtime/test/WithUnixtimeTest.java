@@ -17,12 +17,12 @@ public class WithUnixtimeTest {
 		
 		try {
 			if(new OhlcCandle(1,3,1,2,false).withUnixtime(
-					Calendar.getInstance().getTimeInMillis()).candle().open()
+					Calendar.getInstance().getTimeInMillis()).bidCandle().open()
 					!=1)
 			fail("Bad open, stored open is: "+new OhlcCandle(1,3,1,2,false).withUnixtime(
-					Calendar.getInstance().getTimeInMillis()).candle().open());
+					Calendar.getInstance().getTimeInMillis()).bidCandle().open());
 			if(new OhlcCandle(1,3,1,2,false).withUnixtime(
-					Calendar.getInstance().getTimeInMillis()).candle().close()
+					Calendar.getInstance().getTimeInMillis()).bidCandle().close()
 					!=2)
 			fail("Bad open");
 			long creationTime=Calendar.getInstance().getTimeInMillis();
@@ -32,8 +32,8 @@ public class WithUnixtimeTest {
 
 			WithUnixtime tempOhlcCandle=new OhlcCandle(1,3,1,2,true).withUnixtime(
 					Calendar.getInstance().getTimeInMillis());
-			tempOhlcCandle.candle().newTick(5);
-			if(tempOhlcCandle.candle().close()!=5 || tempOhlcCandle.candle().high()!=5)
+			tempOhlcCandle.bidCandle().newTick(5);
+			if(tempOhlcCandle.bidCandle().close()!=5 || tempOhlcCandle.bidCandle().high()!=5)
 				fail("newTick() gone bad");
 			
 		} catch (Exception e) {
